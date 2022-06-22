@@ -1,0 +1,178 @@
+[
+  {
+    "key": "1",
+    "namaProduk": "Cat Tembok",
+    "kategori": "Cat",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 15000,
+    "supplier": "Toko Berkah",
+    "stok": 100,
+    "hargaModal": 13000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "2",
+    "namaProduk": "Cat Kayu",
+    "kategori": "Cat",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 20000,
+    "supplier": "Toko Berkah",
+    "stok": 143,
+    "hargaModal": 18000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "3",
+    "namaProduk": "Cat Besi",
+    "kategori": "Cat",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 13000,
+    "supplier": "Toko Berkah",
+    "stok": 45,
+    "hargaModal": 11000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "4",
+    "namaProduk": "Keramik",
+    "kategori": "Keramik",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 10000,
+    "supplier": "Toko Abadi",
+    "stok": 500,
+    "hargaModal": 8000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "5",
+    "namaProduk": "Kawat",
+    "kategori": "Kawat",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 8000,
+    "supplier": "Toko Jaya",
+    "stok": 35,
+    "hargaModal": 6000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "6",
+    "namaProduk": "Asbes",
+    "kategori": "Atap",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 60000,
+    "supplier": "Toko Abadi",
+    "stok": 133,
+    "hargaModal": 55000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "7",
+    "namaProduk": "Gergaji Besi",
+    "kategori": "Gergaji",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 30000,
+    "supplier": "Toko Sinar",
+    "stok": 23,
+    "hargaModal": 25000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "8",
+    "namaProduk": "Pilox",
+    "kategori": "Cat",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 55000,
+    "supplier": "Toko Abadi",
+    "stok": 50,
+    "hargaModal": 50000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "9",
+    "namaProduk": "Engsel Pintu",
+    "kategori": "Pintu",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 16000,
+    "supplier": "Toko Berkah",
+    "stok": 44,
+    "hargaModal": 13000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "10",
+    "namaProduk": "Selang",
+    "kategori": "Selang",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 40000,
+    "supplier": "Toko Jaya",
+    "stok": 5,
+    "hargaModal": 37000,
+    "tanggalMasuk": "21-06-2022"
+  },
+  {
+    "key": "11",
+    "namaProduk": "Paku",
+    "kategori": "Besi",
+    "foto": {
+      "uid": "-1",
+      "name": "foto-produk.png",
+      "status": "done",
+      "url": "/assets/logo.f16b9f6a.png"
+    },
+    "hargaJual": 2000,
+    "supplier": "Toko Sinar",
+    "stok": 42,
+    "hargaModal": 1000,
+    "tanggalMasuk": "21-06-2022"
+  }
+]

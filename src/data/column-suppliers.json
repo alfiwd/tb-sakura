@@ -1,0 +1,40 @@
+[
+  {
+    "title": "No",
+    "dataIndex": "No",
+    "key": "no"
+  },
+  {
+    "title": "Nama Supplier",
+    "dataIndex": "namaSupplier",
+    "key": "namaSupplier"
+  },
+  {
+    "title": "Daerah",
+    "dataIndex": "daerah",
+    "key": "daerah"
+  },
+  {
+    "title": "Alamat",
+    "dataIndex": "alamat",
+    "key": "alamat"
+  },
+  {
+    "title": "Nomor Handphone",
+    "dataIndex": "nomorHandphone",
+    "key": "nomorHandphone",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Email",
+    "dataIndex": "email",
+    "key": "email",
+    "responsive": ["md"]
+  },
+  {
+    "title": "",
+    "dataIndex": "aksi",
+    "key": "aksi",
+    "responsive": ["md"]
+  }
+]

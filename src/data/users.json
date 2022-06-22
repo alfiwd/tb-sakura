@@ -1,0 +1,32 @@
+[
+  {
+    "key": "1",
+    "namaUser": "User 01",
+    "nomorHandphone": "0813123123",
+    "email": "user01@gmail.com"
+  },
+  {
+    "key": "2",
+    "namaUser": "User 02",
+    "nomorHandphone": "0813456456",
+    "email": "user02@gmail.com"
+  },
+  {
+    "key": "3",
+    "namaUser": "User 03",
+    "nomorHandphone": "0813789789",
+    "email": "user03@gmail.com"
+  },
+  {
+    "key": "4",
+    "namaUser": "User 04",
+    "nomorHandphone": "0812111111",
+    "email": "user04@gmail.com"
+  },
+  {
+    "key": "5",
+    "namaUser": "User 05",
+    "nomorHandphone": "0813222222",
+    "email": "user05@gmail.com"
+  }
+]

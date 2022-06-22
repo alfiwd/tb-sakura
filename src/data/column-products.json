@@ -1,0 +1,56 @@
+[
+  {
+    "title": "No",
+    "dataIndex": "No",
+    "key": "no"
+  },
+  {
+    "title": "Nama Produk",
+    "dataIndex": "namaProduk",
+    "key": "namaProduk"
+  },
+  {
+    "title": "Kategori",
+    "dataIndex": "kategori",
+    "key": "kategori"
+  },
+  {
+    "title": "Foto",
+    "dataIndex": "foto",
+    "key": "foto"
+  },
+  {
+    "title": "Harga Modal",
+    "dataIndex": "hargaModal",
+    "key": "hargaModal"
+  },
+  {
+    "title": "Harga Jual",
+    "dataIndex": "hargaJual",
+    "key": "hargaJual",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Supplier",
+    "dataIndex": "supplier",
+    "key": "supplier",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Stok",
+    "dataIndex": "stok",
+    "key": "stok",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Tanggal Masuk",
+    "dataIndex": "tanggalMasuk",
+    "key": "tanggalMasuk"
+  },
+  {
+    "title": "",
+    "dataIndex": "aksi",
+    "key": "aksi",
+    "responsive": ["md"]
+  }
+]

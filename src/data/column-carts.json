@@ -1,0 +1,30 @@
+[
+  {
+    "title": "No",
+    "dataIndex": "No",
+    "key": "no"
+  },
+  {
+    "title": "Deskripsi",
+    "dataIndex": "keranjangDeskripsi",
+    "key": "keranjangDeskripsi"
+  },
+  {
+    "title": "Jumlah",
+    "dataIndex": "jumlah",
+    "key": "jumlah",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Total Harga",
+    "dataIndex": "totalHarga",
+    "key": "totalHarga",
+    "responsive": ["md"]
+  },
+  {
+    "title": "",
+    "dataIndex": "hapus",
+    "key": "hapus",
+    "responsive": ["md"]
+  }
+]

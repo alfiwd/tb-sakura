@@ -1,0 +1,42 @@
+[
+  {
+    "key": "1",
+    "namaSupplier": "Toko Abadi",
+    "daerah": "Jakarta Timur",
+    "alamat": "Jalan 123",
+    "nomorHandphone": "0813123123",
+    "email": "tokoabadi@gmail.com"
+  },
+  {
+    "key": "2",
+    "namaSupplier": "Toko Jaya",
+    "daerah": "Tangerang Selatan",
+    "alamat": "Jalan 456",
+    "nomorHandphone": "0813456456",
+    "email": "tokojaya@gmail.com"
+  },
+  {
+    "key": "3",
+    "namaSupplier": "Toko Indah",
+    "daerah": "Tangerang",
+    "alamat": "Jalan 789",
+    "nomorHandphone": "0813789789",
+    "email": "tokoindah@gmail.com"
+  },
+  {
+    "key": "4",
+    "namaSupplier": "Toko Sentosa",
+    "daerah": "Jakarta Selatan",
+    "alamat": "Jalan 111",
+    "nomorHandphone": "0812111111",
+    "email": "tokosentosa@gmail.com"
+  },
+  {
+    "key": "5",
+    "namaSupplier": "Toko Joni",
+    "daerah": "Jakarta Barat",
+    "alamat": "Jalan 222",
+    "nomorHandphone": "0813222222",
+    "email": "tokojoni@gmail.com"
+  }
+]

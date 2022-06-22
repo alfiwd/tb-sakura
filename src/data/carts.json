@@ -1,0 +1,47 @@
+[
+  {
+    "key": "1",
+    "keranjangDeskripsi": {
+      "namaProduk": "Genteng",
+      "harga": "12000",
+      "fotoProduk": "../public/images/logo.png"
+    },
+    "totalHarga": "150000"
+  },
+  {
+    "key": "2",
+    "keranjangDeskripsi": {
+      "namaProduk": "Kawat",
+      "harga": "6000",
+      "fotoProduk": "../public/images/logo.png"
+    },
+    "totalHarga": "60000"
+  },
+  {
+    "key": "3",
+    "keranjangDeskripsi": {
+      "namaProduk": "Cat Besi",
+      "harga": "15000",
+      "fotoProduk": "../public/images/logo.png"
+    },
+    "totalHarga": "250000"
+  },
+  {
+    "key": "4",
+    "keranjangDeskripsi": {
+      "namaProduk": "Cat Tembok",
+      "harga": "13000",
+      "fotoProduk": "../public/images/logo.png"
+    },
+    "totalHarga": "60000"
+  },
+  {
+    "key": "5",
+    "keranjangDeskripsi": {
+      "namaProduk": "Selang",
+      "harga": "6000",
+      "fotoProduk": "../public/images/logo.png"
+    },
+    "totalHarga": "55000"
+  }
+]
