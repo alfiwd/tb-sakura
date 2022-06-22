@@ -243,7 +243,6 @@ export default {
 
   mounted() {
     setTimeout(() => {
-      console.log(this.data);
       if (this.data != undefined) {
         this.setData();
       }
