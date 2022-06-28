@@ -31,7 +31,7 @@
           <a-col :xs="6" :md="6" class="jumlah" style="">
             <div>
               <plus-circle-outlined @click="actionJumlah('tambah', index, item)" />
-              <a-input-number id="inputNumber" v-model:value="item.quantity" :min="1" :max="10" :controls="false" style="margin: 0px 10px" />
+              <a-input-number id="inputNumber" v-model:value="item.quantity" :min="1" :controls="false" style="margin: 0px 10px" />
               <minus-circle-outlined @click="actionJumlah('kurang', index, item)" />
             </div>
           </a-col>
