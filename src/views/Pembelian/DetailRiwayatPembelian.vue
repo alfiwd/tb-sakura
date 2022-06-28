@@ -33,8 +33,8 @@
           <a-col :xs="4" :md="4">{{ index + 1 }}</a-col>
           <a-col :xs="4" :md="4">{{ item.product.nama }}</a-col>
           <a-col :xs="4" :md="4" style="text-align: center">{{ item.product.kategori }}</a-col>
-          <a-col :xs="4" :md="4" style="text-align: center">
-            <img :src="`data:image/png;base64,${item.product.photo}`" alt="foto product" width="100" />
+          <a-col :xs="4" :md="4" style="text-align: center" class="foto-produk">
+            <img :src="`data:image/png;base64,${item.product.photo}`" alt="foto product" />
           </a-col>
           <a-col :xs="4" :md="4" style="text-align: center">{{ rupiah(`${item.price}`, "Rp. ") }}</a-col>
           <a-col :xs="4" :md="4" style="text-align: center">{{ item.quantity }}</a-col>
@@ -92,3 +92,16 @@ export default {
   },
 };
 </script>
+
+<style>
+.detail-riwayat-pembelian .foto-produk img {
+  width: 100px;
+}
+
+/* ===================== Responsive Breakpoints ===================== */
+@media (max-width: 992px) {
+  .detail-riwayat-pembelian .foto-produk img {
+    width: 50px;
+  }
+}
+</style>

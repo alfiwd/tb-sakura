@@ -30,9 +30,9 @@
           </a-col>
           <a-col :xs="6" :md="6" class="jumlah" style="">
             <div>
-              <plus-circle-outlined @click="actionJumlah('tambah', index)" />
-              <a-input-number id="inputNumber" v-model:value="item.quantity" :min="1" :controls="false" style="margin: 0px 10px" />
-              <minus-circle-outlined @click="actionJumlah('kurang', index)" />
+              <plus-circle-outlined @click="actionJumlah('tambah', index, item)" />
+              <a-input-number id="inputNumber" v-model:value="item.quantity" :min="1" :max="10" :controls="false" style="margin: 0px 10px" />
+              <minus-circle-outlined @click="actionJumlah('kurang', index, item)" />
             </div>
           </a-col>
           <a-col :xs="5" :md="5" class="total-harga" style="">
@@ -109,13 +109,17 @@ export default {
   },
 
   methods: {
-    actionJumlah(tipe, index) {
+    actionJumlah(tipe, index, item) {
       if (tipe == "tambah") {
-        this.dataCarts[index].quantity = this.dataCarts[index].quantity + 1;
-        this.products[index].quantity = this.products[index].quantity + 1;
-        localStorage.setItem("orderProduct", JSON.stringify(this.dataCarts));
+        if (this.dataCarts[index].quantity >= item.stok || this.products[index].quantity >= item.stok) {
+          this.toast("error", "Melebihi stok");
+        } else {
+          this.dataCarts[index].quantity = this.dataCarts[index].quantity + 1;
+          this.products[index].quantity = this.products[index].quantity + 1;
+          localStorage.setItem("orderProduct", JSON.stringify(this.dataCarts));
+        }
       } else if (tipe == "kurang") {
-        if (this.dataCarts[index].quantity > 1 || this.products[index].quantity) {
+        if (this.dataCarts[index].quantity > 1 || this.products[index].quantity > 1) {
           this.dataCarts[index].quantity = this.dataCarts[index].quantity - 1;
           this.products[index].quantity = this.products[index].quantity - 1;
           localStorage.setItem("orderProduct", JSON.stringify(this.dataCarts));
@@ -133,6 +137,11 @@ export default {
     },
     async checkout() {
       this.loading = true;
+      try {
+        const response = await api.get();
+      } catch (error) {
+        console.log({ error });
+      }
       const user = JSON.parse(localStorage.getItem("user"));
       const data = {
         totalPembelian: this.totalPembelian,
@@ -142,24 +151,24 @@ export default {
         products: this.products,
         notes: this.formState.notes,
       };
-      const keyObj = ["createdAt", "createdBy", "deletedAt", "hargaJual", "hargaModal", "kategori", "nama", "photo", "stok", "supplier", "tglMasuk", "updatedAt", "updatedBy"];
-      for (let i = 0; i < this.products.length; i++) {
-        for (let j = 0; j < keyObj.length; j++) {
-          delete this.products[i][keyObj[j]];
-        }
-      }
-      try {
-        const response = await api.post("api/order", data);
-        if (response.status === 200) {
-          this.loading = false;
-          this.toast("success", "Berhasil save order");
-          localStorage.removeItem("orderProduct");
-          window.location.reload();
-        }
-      } catch (error) {
-        this.toast("error", `Server error\nGagal checkout barang`);
-        this.loading = false;
-      }
+      // const keyObj = ["createdAt", "createdBy", "deletedAt", "hargaJual", "hargaModal", "kategori", "nama", "photo", "stok", "supplier", "tglMasuk", "updatedAt", "updatedBy"];
+      // for (let i = 0; i < this.products.length; i++) {
+      //   for (let j = 0; j < keyObj.length; j++) {
+      //     delete this.products[i][keyObj[j]];
+      //   }
+      // }
+      // try {
+      //   const response = await api.post("api/order", data);
+      //   if (response.status === 200) {
+      //     this.loading = false;
+      //     this.toast("success", "Berhasil save order");
+      //     localStorage.removeItem("orderProduct");
+      //     window.location.reload();
+      //   }
+      // } catch (error) {
+      //   this.toast("error", `Server error\nGagal checkout barang`);
+      //   this.loading = false;
+      // }
     },
     rupiah,
     toast,
