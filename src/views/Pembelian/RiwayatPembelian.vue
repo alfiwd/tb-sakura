@@ -33,7 +33,6 @@ export default {
       this.loading = true;
       try {
         const response = await api.get("api/order");
-        console.log({ response });
         if (response.status === 200) {
           this.purchaseHistory = response.data.content;
           this.loading = false;

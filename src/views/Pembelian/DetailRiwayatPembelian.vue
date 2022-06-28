@@ -12,13 +12,13 @@
             ><h1><strong>No</strong></h1></a-col
           >
           <a-col :xs="4" :md="4" style=""
-            ><h1><strong>Nama Produk</strong></h1></a-col
+            ><h1><strong>Foto</strong></h1></a-col
           >
           <a-col :xs="4" :md="4" style="text-align: center"
             ><h1><strong>Kategori</strong></h1></a-col
           >
           <a-col :xs="4" :md="4" style="text-align: center"
-            ><h1><strong>Foto</strong></h1></a-col
+            ><h1><strong>Nama Produk</strong></h1></a-col
           >
           <a-col :xs="4" :md="4" style="text-align: center"
             ><h1><strong>Harga</strong></h1></a-col
@@ -29,13 +29,13 @@
         </a-row>
       </a-col>
       <a-col :xs="24" :md="24">
-        <a-row v-for="(item, index) in orderItems" :key="item.product.id" style="margin-bottom: 20px">
-          <a-col :xs="4" :md="4">{{ index + 1 }}</a-col>
-          <a-col :xs="4" :md="4">{{ item.product.nama }}</a-col>
-          <a-col :xs="4" :md="4" style="text-align: center">{{ item.product.kategori }}</a-col>
-          <a-col :xs="4" :md="4" style="text-align: center" class="foto-produk">
+        <a-row v-for="(item, index) in orderItems" :key="item.product.id" align="middle" style="margin-bottom: 20px">
+          <a-col :xs="4" :md="4">{{ index + 1 }}. </a-col>
+          <a-col :xs="4" :md="4" class="foto-produk">
             <img :src="`data:image/png;base64,${item.product.photo}`" alt="foto product" />
           </a-col>
+          <a-col :xs="4" :md="4" style="text-align: center">{{ item.product.nama }}</a-col>
+          <a-col :xs="4" :md="4" style="text-align: center">{{ item.product.kategori }}</a-col>
           <a-col :xs="4" :md="4" style="text-align: center">{{ rupiah(`${item.price}`, "Rp. ") }}</a-col>
           <a-col :xs="4" :md="4" style="text-align: center">{{ item.quantity }}</a-col>
         </a-row>
