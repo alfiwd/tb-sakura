@@ -9,6 +9,8 @@
   "dependencies": {
     "ant-design-vue": "^3.2.5",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "moment": "^2.29.3",
     "vue": "^3.2.36",
     "vue-router": "^4.0.15",
     "vue-toastification": "^2.0.0-rc.5"

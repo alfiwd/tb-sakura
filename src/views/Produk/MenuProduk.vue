@@ -25,17 +25,19 @@
     </a-row>
     <a-row>
       <a-col :xs="24" :md="24" :lg="24">
-        <Table v-model:data="searchData" :columns="columnProducts" name="product" />
+        <Table v-model:data="searchData" v-model:loading="loading" v-on:deleteItem="deleteProduct" :columns="columnProducts" name="product" />
       </a-col>
     </a-row>
   </div>
 </template>
 
 <script>
-import Table from "../../components/Table.vue";
-import dataProducts from "../../data/products.json";
-import columnProducts from "../../data/column-products.json";
 import { AppstoreAddOutlined, DownOutlined } from "@ant-design/icons-vue";
+
+import Table from "../../components/Table.vue";
+import columnProducts from "../../data/column-products.json";
+import api from "../../services/api";
+import toast from "../../components/toast";
 
 export default {
   data() {
@@ -43,6 +45,8 @@ export default {
       search: "",
       columnProducts,
       searchOption: "nama_produk",
+      dataProducts: [],
+      loading: false,
     };
   },
 
@@ -56,18 +60,45 @@ export default {
     tambahProduk() {
       this.$router.push("/tambah-produk");
     },
+    async setData() {
+      this.loading = true;
+      try {
+        const response = await api.get("api/product");
+        console.log({ response });
+        this.dataProducts = response.data.content;
+        this.loading = false;
+      } catch (error) {
+        this.toast("error", `Server error\nGagal mendapatkan data produk`);
+      }
+    },
+    async deleteProduct(id) {
+      try {
+        const response = await api.delete(`api/product/${id}`);
+        if (response.status === 200) {
+          this.toast("success", "Berhasil menghapus product");
+          this.setData();
+        }
+      } catch (error) {
+        this.toast("error", "Server error");
+      }
+    },
+    toast,
   },
 
   computed: {
     searchData() {
       if (this.searchOption == "nama_produk") {
         const matchParam = new RegExp(this.search, "gi");
-        return dataProducts.filter((item) => item.namaProduk.match(matchParam));
+        return this.dataProducts?.filter((item) => item?.nama?.match(matchParam));
       } else {
         const matchParam = new RegExp(this.search, "gi");
-        return dataProducts.filter((item) => item.kategori.match(matchParam));
+        return this.dataProducts?.filter((item) => item?.kategori?.match(matchParam));
       }
     },
+  },
+
+  mounted() {
+    this.setData();
   },
 };
 </script>

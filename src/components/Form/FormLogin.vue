@@ -8,7 +8,6 @@
           </template>
         </a-input>
       </a-form-item>
-
       <a-form-item label="Password" name="password" :rules="[{ required: true, message: 'Masukkan password terlebih dahulu!' }]">
         <a-input-password v-model:value="formState.password">
           <template #prefix>
@@ -16,9 +15,8 @@
           </template>
         </a-input-password>
       </a-form-item>
-
       <a-form-item>
-        <a-button type="default" html-type="submit" class="login-form-button btn-login"> Log in </a-button>
+        <a-button type="default" html-type="submit" class="login-form-button btn-login" :loading="loading"> Log in </a-button>
       </a-form-item>
     </a-form>
   </div>
@@ -26,7 +24,9 @@
 
 <script>
 import { UserOutlined, LockOutlined } from "@ant-design/icons-vue";
-import { useToast } from "vue-toastification";
+
+import api from "../../services/api";
+import toast from "../../components/toast";
 
 export default {
   data() {
@@ -36,6 +36,7 @@ export default {
         password: "",
         remember: true,
       },
+      loading: false,
     };
   },
 
@@ -45,27 +46,35 @@ export default {
   },
 
   methods: {
-    onFinish(values) {
-      if (values.username == "user01" && values.password == "123456") {
-        localStorage.setItem("login", "true");
-        this.$router.push({ name: "Dashboard", params: { name: values.username, visible: true } });
-      } else {
-        const toast = useToast();
-        toast.error("Username atau password salah!", {
-          position: "top-center",
-          timeout: 1500,
-          closeOnClick: true,
-          pauseOnFocusLoss: true,
-          pauseOnHover: true,
-          hideProgressBar: true,
-          closeButton: "button",
-          icon: true,
-        });
+    async onFinish(values) {
+      this.loading = true;
+      const username = values.username;
+      const password = values.password;
+      const data = {
+        username,
+        password,
+      };
+      try {
+        const response = await api.post("api/auth/signin", data);
+        if (response.status == 200) {
+          localStorage.setItem("accessToken", response.data.accessToken);
+          localStorage.setItem("user", JSON.stringify(response.data));
+          this.$router.push({ name: "Dashboard", params: { name: response.data.username, visible: true } });
+          this.loading = false;
+        }
+      } catch (error) {
+        console.log({ error });
+        if (error.message == "Network Error") {
+          this.toast("error", "Periksa kembali jaringan anda");
+          this.loading = false;
+        } else if (error.response.status === 401) {
+          this.toast("error", "Username atau password salah!");
+          this.loading = false;
+        }
       }
     },
-    onFinishFailed(errorInfo) {
-      // console.log("Failed:", errorInfo);
-    },
+    onFinishFailed(errorInfo) {},
+    toast,
   },
 };
 </script>

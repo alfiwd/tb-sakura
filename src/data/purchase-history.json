@@ -1,0 +1,32 @@
+[
+  {
+    "key": "1",
+    "username": "User 01",
+    "tanggalPembelian": "22-06-2022",
+    "notes": "tes 123"
+  },
+  {
+    "key": "2",
+    "username": "User 02",
+    "tanggalPembelian": "22-06-2022",
+    "notes": "tes 123"
+  },
+  {
+    "key": "3",
+    "username": "User 03",
+    "tanggalPembelian": "22-06-2022",
+    "notes": "tes 123"
+  },
+  {
+    "key": "4",
+    "username": "User 04",
+    "tanggalPembelian": "22-06-2022",
+    "notes": "tes 123"
+  },
+  {
+    "key": "5",
+    "username": "User 05",
+    "tanggalPembelian": "22-06-2022",
+    "notes": "tes 123"
+  }
+]

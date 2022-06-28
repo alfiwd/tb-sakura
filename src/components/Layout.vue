@@ -32,12 +32,17 @@
           <span>Keranjang</span>
           <router-link to="/keranjang"></router-link>
         </a-menu-item>
-        <a-menu-item key="6" :class="$route.name == 'Menu User' ? 'ant-menu-item-selected' : ''">
+        <a-menu-item key="6" :class="$route.name == 'Riwayat Pembelian' || $route.name == 'Detail Riwayat Pembelian' ? 'ant-menu-item-selected' : ''">
+          <ordered-list-outlined />
+          <span>Riwayat Pembelian</span>
+          <router-link to="/riwayat-pembelian"></router-link>
+        </a-menu-item>
+        <a-menu-item v-if="roles[0] === 'ROLE_ADMIN'" key="7" :class="$route.name == 'Menu User' ? 'ant-menu-item-selected' : ''">
           <user-outlined />
           <span>Menu User</span>
           <router-link to="/menu-user"></router-link>
         </a-menu-item>
-        <a-menu-item v-on:click="logout" key="7">
+        <a-menu-item v-on:click="logout" key="8">
           <logout-outlined />
           <span>Logout</span>
         </a-menu-item>
@@ -66,7 +71,7 @@
   </a-layout>
 </template>
 <script lang="ts">
-import { HomeOutlined, ShopOutlined, ShoppingCartOutlined, TeamOutlined, HddOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons-vue";
+import { HomeOutlined, ShopOutlined, ShoppingCartOutlined, TeamOutlined, HddOutlined, LogoutOutlined, UserOutlined, OrderedListOutlined } from "@ant-design/icons-vue";
 import { defineComponent, ref } from "vue";
 import Modal from "./Modal.vue";
 
@@ -79,6 +84,7 @@ export default defineComponent({
     HddOutlined,
     LogoutOutlined,
     UserOutlined,
+    OrderedListOutlined,
     Modal,
   },
 
@@ -87,6 +93,7 @@ export default defineComponent({
       collapsed: ref<boolean>(false),
       visible: false,
       name: "",
+      roles: [],
     };
   },
 
@@ -94,19 +101,23 @@ export default defineComponent({
 
   methods: {
     logout() {
-      localStorage.removeItem("login");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
+      localStorage.removeItem("orderProduct");
       this.$router.push("/");
     },
   },
 
   mounted() {
-    if (!localStorage.getItem("login")) {
+    if (!localStorage.getItem("accessToken")) {
       this.$router.push("/");
     }
     if (this.$route.params.name) {
       this.name = this.$route.params.name;
       this.visible = true;
     }
+    const dataUser = JSON.parse(localStorage.getItem("user"));
+    this.roles.push(dataUser.roles[0]);
   },
 });
 </script>
@@ -122,18 +133,6 @@ export default defineComponent({
 }
 [data-theme="dark"] .site-layout .site-layout-background {
   background: #141414;
-}
-
-.ant-layout-header,
-.ant-layout-footer {
-  /* width: max-content; */
-  /* overflow-x: hidden; */
-}
-
-.ant-layout-content {
-}
-
-.ant-layout {
 }
 
 .logo {

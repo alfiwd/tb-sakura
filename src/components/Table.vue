@@ -1,27 +1,30 @@
 <template>
-  <a-table :columns="columns" :row-key="(record) => record.key" :data-source="data">
-    <template v-slot:bodyCell="{ column, record }">
+  <a-table :columns="columns" :row-key="(record) => record.key" :data-source="data" :loading="loading" @change="change" :pagination="{ showSizeChanger: true, responsive: true }">
+    <template v-slot:bodyCell="{ column, record, index }">
       <template v-if="column.key === 'foto'">
-        <img :src="record.foto.url" alt="" width="100" />
+        <img v-if="record.photo !== null" :src="`data:image/png;base64,${record.photo}`" alt="photo product" width="100" />
       </template>
       <template v-if="column.key === 'no'">
-        {{ record.key }}
+        {{ index + 1 }}
       </template>
-      <template v-if="column.key === 'hargaJual'"> Rp. {{ record.hargaJual }} </template>
-      <template v-if="column.key === 'hargaModal'"> Rp. {{ record.hargaModal }} </template>
+      <template v-if="column.key === 'supplier'">
+        {{ record?.supplier?.nama }}
+      </template>
+      <template v-if="column.key === 'hargaJual'"> {{ rupiah(`${record.hargaJual}`, "Rp. ") }} </template>
+      <template v-if="column.key === 'hargaModal'"> {{ rupiah(`${record.hargaModal}`, "Rp. ") }} </template>
       <template v-if="column.key == 'aksi'">
         <div class="aksi">
           <div class="hapus">
-            <a-popconfirm v-if="data.length" :title="titleDelete()">
+            <a-popconfirm v-if="data.length" :title="titleDelete()" @confirm="onDelete(record.id)">
               <delete-outlined />
               <span class="text">Hapus</span>
             </a-popconfirm>
           </div>
-          <div class="ubah">
+          <div v-on:click="ubahData(record, name)" class="ubah">
             <edit-outlined />
-            <span v-if="name == 'product'" v-on:click="ubahData(record, name)" class="text">Ubah</span>
-            <span v-else-if="name == 'supplier'" v-on:click="ubahData(record, name)" class="text">Ubah</span>
-            <span v-else-if="name == 'user'" v-on:click="ubahData(record, name)" class="text">Ubah</span>
+            <span v-if="name == 'product'" class="text">Ubah</span>
+            <span v-else-if="name == 'supplier'" class="text">Ubah</span>
+            <span v-else-if="name == 'user'" class="text">Ubah</span>
           </div>
         </div>
       </template>
@@ -45,11 +48,15 @@
           </div>
         </div>
       </template>
-      <template v-if="column.key == 'jumlah'">
-        <div class="jumlah">
-          <plus-circle-outlined v-on:click="actionJumlah('before')" />
-          <a-input-number id="inputNumber" v-model:value="jumlah" :min="1" :controls="false" style="margin: 0px 10px" />
-          <minus-circle-outlined v-on:click="actionJumlah('after')" />
+      <template v-if="column.key == 'lihat'">
+        <div v-on:click="lihatData(record.id)" class="lihat">
+          <eye-outlined />
+          <span>Lihat Data</span>
+        </div>
+      </template>
+      <template v-if="column.key === 'stok'">
+        <div v-if="record?.stok < 1">
+          <p style="color: red">Stok habis</p>
         </div>
       </template>
     </template>
@@ -57,8 +64,10 @@
 </template>
 
 <script>
-import logo from "../../public/images/logo.png";
-import { EditOutlined, DeleteOutlined, PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons-vue";
+import { EditOutlined, DeleteOutlined, PlusCircleOutlined, MinusCircleOutlined, EyeOutlined } from "@ant-design/icons-vue";
+
+import toast from "../components/toast";
+import rupiah from "../helper/rupiah";
 
 export default {
   data() {
@@ -72,11 +81,18 @@ export default {
     DeleteOutlined,
     PlusCircleOutlined,
     MinusCircleOutlined,
+    EyeOutlined,
   },
 
-  props: ["data", "columns", "name"],
+  props: ["data", "columns", "name", "loading"],
 
   methods: {
+    change(a, b, c, d) {
+      console.log({ a });
+      console.log({ b });
+      console.log({ c });
+      console.log({ d });
+    },
     ubahData(record, name) {
       const data = JSON.stringify(record);
       if (name == "product") {
@@ -96,16 +112,19 @@ export default {
         return "Apakah yakin ingin menghapus data user ini?";
       }
     },
-    actionJumlah(type) {
-      if (type == "before") {
-        this.jumlah = this.jumlah + 1;
-      } else if (type == "after") {
-        if (this.jumlah > 1) {
-          this.jumlah = this.jumlah - 1;
-        }
-      }
+    lihatData(record) {
+      const data = JSON.stringify(record);
+      this.$router.push({ name: "Detail Riwayat Pembelian", params: { data } });
     },
+    onDelete(id) {
+      this.$emit("deleteItem", id);
+    },
+    nomor(index, length) {},
+    toast,
+    rupiah,
   },
+
+  emits: ["deleteItem"],
 };
 </script>
 
@@ -115,7 +134,8 @@ export default {
   flex-direction: column;
 }
 
-.aksi .anticon {
+.aksi .anticon,
+.lihat .anticon {
   margin-right: 5px;
 }
 
@@ -130,6 +150,11 @@ export default {
 
 .ubah span {
   color: orange;
+  cursor: pointer;
+}
+
+.lihat span {
+  color: #1890ff;
   cursor: pointer;
 }
 

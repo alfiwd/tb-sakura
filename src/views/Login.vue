@@ -24,7 +24,7 @@ export default {
   },
 
   mounted() {
-    if (localStorage.getItem("login")) {
+    if (localStorage.getItem("accessToken")) {
       this.$router.push({ name: "Dashboard" });
     }
   },

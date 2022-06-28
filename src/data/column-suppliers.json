@@ -6,13 +6,8 @@
   },
   {
     "title": "Nama Supplier",
-    "dataIndex": "namaSupplier",
-    "key": "namaSupplier"
-  },
-  {
-    "title": "Daerah",
-    "dataIndex": "daerah",
-    "key": "daerah"
+    "dataIndex": "nama",
+    "key": "nama"
   },
   {
     "title": "Alamat",
@@ -21,14 +16,20 @@
   },
   {
     "title": "Nomor Handphone",
-    "dataIndex": "nomorHandphone",
-    "key": "nomorHandphone",
+    "dataIndex": "noHp",
+    "key": "noHp",
     "responsive": ["md"]
   },
   {
-    "title": "Email",
-    "dataIndex": "email",
-    "key": "email",
+    "title": "Nomor Telephone",
+    "dataIndex": "noTelepon",
+    "key": "noTelepon",
+    "responsive": ["md"]
+  },
+  {
+    "title": "Deskripsi",
+    "dataIndex": "deskripsi",
+    "key": "deskripsi",
     "responsive": ["md"]
   },
   {

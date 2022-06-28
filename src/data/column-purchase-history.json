@@ -10,26 +10,21 @@
     "key": "username"
   },
   {
-    "title": "Nama User",
-    "dataIndex": "nama",
-    "key": "nama"
-  },
-  {
-    "title": "Nomor Handphone",
-    "dataIndex": "phone",
-    "key": "phone",
+    "title": "Tanggal Pembelian",
+    "dataIndex": "tglPembelian",
+    "key": "tglPembelian",
     "responsive": ["md"]
   },
   {
-    "title": "Email",
-    "dataIndex": "email",
-    "key": "email",
+    "title": "Notes",
+    "dataIndex": "notes",
+    "key": "notes",
     "responsive": ["md"]
   },
   {
     "title": "",
-    "dataIndex": "aksi",
-    "key": "aksi",
+    "dataIndex": "lihat",
+    "key": "lihat",
     "responsive": ["md"]
   }
 ]

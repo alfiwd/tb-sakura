@@ -6,8 +6,8 @@
   },
   {
     "title": "Nama Produk",
-    "dataIndex": "namaProduk",
-    "key": "namaProduk"
+    "dataIndex": "nama",
+    "key": "nama"
   },
   {
     "title": "Kategori",
@@ -44,8 +44,8 @@
   },
   {
     "title": "Tanggal Masuk",
-    "dataIndex": "tanggalMasuk",
-    "key": "tanggalMasuk"
+    "dataIndex": "tglMasuk",
+    "key": "tglMasuk"
   },
   {
     "title": "",

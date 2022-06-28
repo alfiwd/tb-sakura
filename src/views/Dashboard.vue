@@ -4,7 +4,7 @@
       <a-col>
         <div class="container">
           <img src="../../public/images/dashboard.svg" alt="dashboard" />
-          <h1>Dashboard tes...</h1>
+          <h1>Dashboard...</h1>
         </div>
       </a-col>
     </a-row>

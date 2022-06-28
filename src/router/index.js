@@ -4,18 +4,19 @@ import Login from "../views/Login.vue";
 import Dashboard from "../views/Dashboard.vue";
 import MenuProduk from "../views/Produk/MenuProduk.vue";
 import MenuSupplier from "../views/Supplier/MenuSupplier.vue";
-import MenuPembelian from "../views/MenuPembelian.vue";
+import MenuPembelian from "../views/Pembelian/MenuPembelian.vue";
 import Keranjang from "../views/Keranjang.vue";
 import MenuUser from "../views/User/MenuUser.vue";
 import KelolaProduk from "../views/Produk/KelolaProduk.vue";
 import KelolaSupplier from "../views/Supplier/KelolaSupplier.vue";
 import KelolaUser from "../views/User/KelolaUser.vue";
+import RiwayatPembelian from "../views/Pembelian/RiwayatPembelian.vue";
+import DetailRiwayatPembelian from "../views/Pembelian/DetailRiwayatPembelian.vue";
 
 import Layout from "../components/Layout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  mode: "hash",
   routes: [
     {
       path: "/",
@@ -221,6 +222,41 @@ const router = createRouter({
             id: 2,
             name: "Tambah User",
             path: "/tambah-user",
+          },
+        ],
+      },
+    },
+    {
+      path: "/riwayat-pembelian",
+      name: "Riwayat Pembelian",
+      component: Layout,
+      props: {
+        content: RiwayatPembelian,
+        breadcrumb: [
+          {
+            id: 1,
+            name: "Riwayat Pembelian",
+            path: "/riwayat-pembelian",
+          },
+        ],
+      },
+    },
+    {
+      path: "/detail-riwayat-pembelian",
+      name: "Detail Riwayat Pembelian",
+      component: Layout,
+      props: {
+        content: DetailRiwayatPembelian,
+        breadcrumb: [
+          {
+            id: 1,
+            name: "Riwayat Pembelian",
+            path: "/riwayat-pembelian",
+          },
+          {
+            id: 2,
+            name: "Detail Riwayat Pembelian",
+            path: "/detail-riwayat-pembelian",
           },
         ],
       },

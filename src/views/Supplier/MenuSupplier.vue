@@ -7,7 +7,7 @@
             <a-form-item class="search-option">
               <a-select v-model:value="searchOption">
                 <a-select-option value="nama_supplier">Nama Supplier</a-select-option>
-                <a-select-option value="kategori">Daerah</a-select-option>
+                <a-select-option value="alamat">Alamat</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -25,7 +25,7 @@
     </a-row>
     <a-row>
       <a-col :xs="24" :md="24" :lg="24">
-        <Table v-model:data="searchData" :columns="columnSuppliers" name="supplier" />
+        <Table v-model:data="searchData" :loading="loading" v-on:deleteItem="deleteSupplier" :columns="columnSuppliers" name="supplier" />
       </a-col>
     </a-row>
     <!-- <div class="top-menu">
@@ -51,9 +51,11 @@
 
 <script>
 import Table from "../../components/Table.vue";
-import dataSuppliers from "../../data/suppliers.json";
 import columnSuppliers from "../../data/column-suppliers.json";
 import { AppstoreAddOutlined, DownOutlined } from "@ant-design/icons-vue";
+
+import api from "../../services/api";
+import toast from "../../components/toast";
 
 export default {
   data() {
@@ -61,6 +63,8 @@ export default {
       search: "",
       columnSuppliers,
       searchOption: "nama_supplier",
+      dataSuppliers: [],
+      loading: false,
     };
   },
 
@@ -74,18 +78,44 @@ export default {
     tambahSupplier() {
       this.$router.push("/tambah-supplier");
     },
+    async setData() {
+      this.loading = true;
+      try {
+        const response = await api.get("api/supplier");
+        this.dataSuppliers = response.data.content;
+        this.loading = false;
+      } catch (error) {
+        this.toast("error", `Server error\nGagal mendapatkan data supplier`);
+      }
+    },
+    async deleteSupplier(id) {
+      try {
+        const response = await api.delete(`api/supplier/${id}`);
+        if (response.status === 200) {
+          this.toast("success", "Berhasil menghapus supplier");
+          this.setData();
+        }
+      } catch (error) {
+        this.toast("error", `Server error\nGagal menghapus supplier`);
+      }
+    },
+    toast,
   },
 
   computed: {
     searchData() {
       if (this.searchOption == "nama_supplier") {
         const matchParam = new RegExp(this.search, "gi");
-        return dataSuppliers.filter((item) => item.namaSupplier.match(matchParam));
+        return this.dataSuppliers?.filter((item) => item?.nama?.match(matchParam));
       } else {
         const matchParam = new RegExp(this.search, "gi");
-        return dataSuppliers.filter((item) => item.daerah.match(matchParam));
+        return this.dataSuppliers?.filter((item) => item?.alamat?.match(matchParam));
       }
     },
+  },
+
+  mounted() {
+    this.setData();
   },
 };
 </script>
