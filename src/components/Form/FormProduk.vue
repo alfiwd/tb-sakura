@@ -7,15 +7,7 @@
             <a-input v-model:value="formState.nama_produk" />
           </a-form-item>
           <a-form-item name="kategori" label="Kategori" :rules="[{ required: true, message: 'Pilih kategori terlebih dahulu!' }]">
-            <a-select v-model:value="formState.kategori" placeholder="Pilih kategori ">
-              <a-select-option value="cat">Cat</a-select-option>
-              <a-select-option value="keramik">Keramik</a-select-option>
-              <a-select-option value="kawat">Kawat</a-select-option>
-              <a-select-option value="atap">Atap</a-select-option>
-              <a-select-option value="gergaji">Gergaji</a-select-option>
-              <a-select-option value="pintu">Pintu</a-select-option>
-              <a-select-option value="selang">Selang</a-select-option>
-            </a-select>
+            <a-input v-model:value="formState.kategori" />
           </a-form-item>
           <a-form-item label="Foto Produk" :rules="[{ required: true, message: 'Masukkan foto produk terlebih dahulu!' }]">
             <a-upload v-model:file-list="formState.foto_produk" accept=".png, .jpg, .jpeg" :before-upload="beforeUpload" list-type="picture-card" @preview="handlePreview">
@@ -67,7 +59,7 @@ export default {
         nama_produk: "",
         harga_jual: null,
         supplier: null,
-        kategori: null,
+        kategori: "",
         stok: null,
         harga_modal: null,
         foto_produk: [],
@@ -164,12 +156,13 @@ export default {
     onFinishFailed(errorInfo) {},
     disabledButton() {
       const nama_produk = this.formState.nama_produk != "";
+      const kategori = this.formState.kategori != "";
       const harga_modal = this.formState.harga_modal != null;
       const harga_jual = this.formState.harga_jual != null;
       const supplier = this.formState.supplier != null;
       const stok = this.formState.stok != null;
       const foto_produk = this.formState.foto_produk.length > 0;
-      if (nama_produk && harga_modal && harga_jual && supplier && stok && foto_produk) {
+      if (nama_produk && kategori && harga_modal && harga_jual && supplier && stok && foto_produk) {
         return false;
       } else {
         return true;
