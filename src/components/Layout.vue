@@ -12,12 +12,12 @@
           <span>Dashboard</span>
           <router-link to="/dashboard"></router-link>
         </a-menu-item>
-        <a-menu-item key="2" :class="$route.name == 'Menu Produk' || $route.name == 'Tambah Produk' || $route.name == 'Ubah Produk' ? 'ant-menu-item-selected' : ''">
+        <a-menu-item v-if="roles[0] === 'ROLE_ADMIN'" key="2" :class="$route.name == 'Menu Produk' || $route.name == 'Tambah Produk' || $route.name == 'Ubah Produk' ? 'ant-menu-item-selected' : ''">
           <hdd-outlined />
           <span>Menu Produk</span>
           <router-link to="/menu-produk"></router-link>
         </a-menu-item>
-        <a-menu-item key="3" :class="$route.name == 'Menu Supplier' || $route.name == 'Tambah Supplier' || $route.name == 'Ubah Supplier' ? 'ant-menu-item-selected' : ''">
+        <a-menu-item v-if="roles[0] === 'ROLE_ADMIN'" key="3" :class="$route.name == 'Menu Supplier' || $route.name == 'Tambah Supplier' || $route.name == 'Ubah Supplier' ? 'ant-menu-item-selected' : ''">
           <team-outlined />
           <span>Menu Supplier</span>
           <router-link to="/menu-supplier"></router-link>
@@ -32,7 +32,7 @@
           <span>Keranjang</span>
           <router-link to="/keranjang"></router-link>
         </a-menu-item>
-        <a-menu-item key="6" :class="$route.name == 'Riwayat Pembelian' || $route.name == 'Detail Riwayat Pembelian' ? 'ant-menu-item-selected' : ''">
+        <a-menu-item v-if="roles[0] === 'ROLE_ADMIN'" key="6" :class="$route.name == 'Riwayat Pembelian' || $route.name == 'Detail Riwayat Pembelian' ? 'ant-menu-item-selected' : ''">
           <ordered-list-outlined />
           <span>Riwayat Pembelian</span>
           <router-link to="/riwayat-pembelian"></router-link>
