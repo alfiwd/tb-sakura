@@ -32,7 +32,7 @@ export default {
     async setData() {
       this.loading = true;
       try {
-        const response = await api.get("api/order");
+        const response = await api.get("api/order?sort=tglPembelian,desc");
         if (response.status === 200) {
           this.purchaseHistory = response.data.content;
           this.loading = false;
